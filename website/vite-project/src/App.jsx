@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 function dash() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Hello World xd</h1>
     </div>
   );
 }
