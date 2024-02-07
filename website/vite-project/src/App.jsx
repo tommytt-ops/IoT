@@ -3,29 +3,29 @@ import "./css/App.css";
 
 function CsvFileAverages() {
   const [averages, setAverages] = useState({});
-  const fileNames = ['file1.csv', 'file2.csv', 'file3.csv']; // Example file names
+  const fileNames = ['file1.csv', 'file2.csv', 'file3.csv']; 
 
   useEffect(() => {
     fileNames.forEach((fileName) => {
-      fetch(`./csv/${fileName}`) // Adjusted the path to be relative to the public directory
+      fetch(`./csv/${fileName}`) 
         .then(response => response.text())
         .then(text => {
-          const rows = text.split('\n').slice(1); // Skipping the header row
+          const rows = text.split('\n'); 
           const columnValues = rows.map(row => {
             const columns = row.split(',');
-            return parseFloat(columns[1]); // Assumes the second column contains the numbers
-          }).filter(value => !isNaN(value)); // Filters out non-numeric values
+            return parseFloat(columns[1]); 
+          }).filter(value => !isNaN(value)); 
 
           const sum = columnValues.reduce((acc, curr) => acc + curr, 0);
           const avg = sum / columnValues.length;
 
           setAverages(prevAverages => ({
             ...prevAverages,
-            [fileName.replace('.csv', '')]: avg // Removes ".csv" from the file name
+            [fileName.replace('.csv', '')]: avg 
           }));
         });
     });
-  }, []); // The empty dependency array means this effect runs once after the initial render
+  }, []); 
 
   return (
     <div className='title'>

@@ -1,17 +1,17 @@
 .title {
-  text-align: center; /* Center aligns the content */
+  text-align: center; 
 }
 
 .title h2 {
-  margin-bottom: 20px; /* Adds some space below the title */
+  margin-bottom: 20px; 
 }
 
 .average-list {
-  list-style-type: none; /* Removes bullet points */
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Removes default margin */
+  list-style-type: none; 
+  padding: 0; 
+  margin: 0; 
 }
 
 .average-list p {
-  margin: 10px 0; /* Adds some vertical space between items */
+  margin: 10px 0; 
 }
