@@ -32,7 +32,7 @@ function CsvFileAverages() {
       <h2>Movies</h2>
       <div className="average-list">
         {Object.entries(averages).map(([fileName, avg]) => (
-          <p key={fileName}>{fileName}: {avg !== null ? `Average: ${avg.toFixed(2)}` : 'Calculating...'}</p>
+          <p key={fileName}>{fileName}: {`Average: ${avg.toFixed(2)}` }</p>
         ))}
       </div>
     </div>
