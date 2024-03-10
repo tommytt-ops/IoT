@@ -1,37 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../css/App.css";
+import {fetchAndCalculateAverages} from "../utils/utils"
 
 function CsvFileAverages() {
   const [averages, setAverages] = useState({});
-  const fileNames = ['file1.csv', 'file2.csv', 'file3.csv']; // Consider dynamically fetching this list
-  const navigate = useNavigate(); // Hook to control history for navigation
+  const fileNames = ['film1.csv', 'film2.csv']; 
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    fileNames.forEach((fileName) => {
-      fetch(`/csv/${fileName}`) 
-        .then(response => response.text())
-        .then(text => {
-          const rows = text.split('\n');
-          const columnValues = rows.map(row => {
-            const columns = row.split(',');
-            return parseFloat(columns[1]);
-          }).filter(value => !isNaN(value));
-
-          const sum = columnValues.reduce((acc, curr) => acc + curr, 0);
-          const avg = sum / columnValues.length;
-
-          setAverages(prevAverages => ({
-            ...prevAverages,
-            [fileName.replace('.csv', '')]: avg
-          }));
-        });
-    });
+    fetchAndCalculateAverages(fileNames, setAverages);
   }, []);
 
   const handleFileClick = (fileName) => {
     localStorage.setItem('selectedFile', fileName);
-    navigate('/movie'); // Assuming '/file-detail' is your route for displaying file details
+    navigate('/movie'); 
   };
 
   return (
