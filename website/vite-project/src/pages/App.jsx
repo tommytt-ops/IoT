@@ -1,38 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import "./css/App.css";
+import { useNavigate } from 'react-router-dom';
+import "../css/App.css";
 
 function CsvFileAverages() {
   const [averages, setAverages] = useState({});
-  const fileNames = ['file1.csv', 'file2.csv', 'file3.csv']; 
+  const fileNames = ['file1.csv', 'file2.csv', 'file3.csv']; // Consider dynamically fetching this list
+  const navigate = useNavigate(); // Hook to control history for navigation
 
   useEffect(() => {
     fileNames.forEach((fileName) => {
-      fetch(`./csv/${fileName}`) 
+      fetch(`/csv/${fileName}`) 
         .then(response => response.text())
         .then(text => {
-          const rows = text.split('\n'); 
+          const rows = text.split('\n');
           const columnValues = rows.map(row => {
             const columns = row.split(',');
-            return parseFloat(columns[1]); 
-          }).filter(value => !isNaN(value)); 
+            return parseFloat(columns[1]);
+          }).filter(value => !isNaN(value));
 
           const sum = columnValues.reduce((acc, curr) => acc + curr, 0);
           const avg = sum / columnValues.length;
 
           setAverages(prevAverages => ({
             ...prevAverages,
-            [fileName.replace('.csv', '')]: avg 
+            [fileName.replace('.csv', '')]: avg
           }));
         });
     });
-  }, []); 
+  }, []);
+
+  const handleFileClick = (fileName) => {
+    localStorage.setItem('selectedFile', fileName);
+    navigate('/movie'); // Assuming '/file-detail' is your route for displaying file details
+  };
 
   return (
     <div className='title'>
       <h2>Movies</h2>
       <div className="average-list">
         {Object.entries(averages).map(([fileName, avg]) => (
-          <p key={fileName}>{fileName}: {`Average: ${avg.toFixed(2)}` }</p>
+          <p key={fileName} onClick={() => handleFileClick(fileName)}>
+            {fileName}: {`Average: ${avg.toFixed(2)}`}
+          </p>
         ))}
       </div>
     </div>
