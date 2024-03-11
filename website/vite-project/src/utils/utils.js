@@ -22,6 +22,34 @@ export function fetchAndCalculateAverages (fileNames, setAveragesCallback) {
       });
 };
 
+export async function fetchDataPoints (fileName, setDataPoints)  {
+  try {
+    const response = await fetch(`/csv/${fileName}.csv`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const csvText = await response.text();
+
+    Papa.parse(csvText, {
+      header: true,
+      dynamicTyping: true,
+      complete: (results) => {
+        console.log('Parsed results:', results.data);
+        const filteredResults = results.data.filter(row => row.time !== undefined && row.value !== undefined);
+        const timeValuePairs = filteredResults.map(row => ({
+          time: row.time,
+          value: row.value
+        }));
+        setDataPoints(timeValuePairs);
+      }
+    });
+  } catch (error) {
+    console.error('Error in fetchDataPoints:', error);
+  }
+};
+
+
+
 
   
 
