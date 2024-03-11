@@ -1,6 +1,25 @@
-
 import React, { useState, useEffect } from 'react';
-import {fetchDataPoints} from '../utils/utils'; 
+import { Line } from 'react-chartjs-2';
+import { fetchDataPoints } from '../utils/utils'; 
+import "../css/Graph.css";
+import {
+  Chart as ChartJS,
+  PointElement,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+ChartJS.register(
+  PointElement,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend
+);
 
 function CsvDataComponent() {
   const [dataPoints, setDataPoints] = useState([]);
@@ -12,16 +31,42 @@ function CsvDataComponent() {
     }
   }, [fileName]);
 
+  const data = {
+    labels: dataPoints.map(point => point.time), 
+    datasets: [{
+      label: fileName,
+      data: dataPoints.map(point => point.value), 
+      fill: false,
+      borderColor: 'rgb(75, 192, 192)',
+      tension: 0.1
+    }]
+  };
+
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          font: {
+            size: 25 
+          }
+        }
+      },
+      tooltip: {
+        bodyFont: {
+          size: 25 
+        }
+      }
+    }
+  }; 
+
   return (
-    <div>
-      <h2>Data Points</h2>
-      <ul>
-        {dataPoints.map((point, index) => (
-          <li key={index}>{`Time: ${point.time}, Value: ${point.value}`}</li>
-        ))}
-      </ul>
+    <div className="graph-container"> 
+      <div className="graph"> 
+        <Line data={data} options={options} />
+      </div>
     </div>
   );
 }
+
 
 export default CsvDataComponent;
