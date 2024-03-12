@@ -18,8 +18,7 @@ COPY . .
 
 # Build the app
 RUN npm run build
-# If you are using Yarn, use `yarn build` instead
-# RUN yarn build
+
 
 # Step 2: Serve the app with Nginx
 FROM nginx:stable-alpine as production-stage
