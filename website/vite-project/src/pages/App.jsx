@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../css/App.css";
-import {fetchAndCalculateAverages} from "../utils/utils"
+import { fetchAndCalculateAverages } from "../utils/utils";
 
 function CsvFileAverages() {
   const [averages, setAverages] = useState({});
-  const fileNames = ['film1.csv', 'film2.csv']; 
+  const fileNames = ["/csv/film1.csv", "/csv/film2.csv"]; 
   const navigate = useNavigate(); 
 
   useEffect(() => {
-    fetchAndCalculateAverages(fileNames, setAverages);
+    fetchAndCalculateAverages(fileNames)
+      .then(calculatedAverages => {
+        setAverages(calculatedAverages); 
+      })
+      .catch(error => {
+        console.error("Failed to fetch and calculate averages:", error);
+      
+      });
   }, []);
 
   const handleFileClick = (fileName) => {
@@ -22,8 +29,8 @@ function CsvFileAverages() {
       <h2>Movies</h2>
       <div className="average-list">
         {Object.entries(averages).map(([fileName, avg]) => (
-          <p key={fileName} onClick={() => handleFileClick(fileName)}>
-            {fileName}: {`Average: ${avg.toFixed(2)}`}
+          <p key={fileName} onClick={() => handleFileClick(fileName.replace('.csv', ''))}>
+            {fileName.replace('.csv', '')}: {`Average: ${avg.toFixed(2)}`}
           </p>
         ))}
       </div>
