@@ -15,7 +15,6 @@ jobs:
 
     - name: List contents of the project directory
       run: ls -la
-      working-directory: ./IoT/website
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
