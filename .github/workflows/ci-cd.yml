@@ -20,20 +20,21 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
+        working-directory: website
         node-version: '20'
         cache: 'npm'
 
     - name: Install Dependencies
       run: npm ci
-      working-directory: ./IoT/website
+      working-directory: website/vite-project
 
     - name: Run Tests
       run: npm run test
-      working-directory: ./IoT/website
+      working-directory: website/vite-project
 
     - name: Build
       run: npm run build
-      working-directory: ./IoT/website
+      working-directory: website/vite-project
       
     
 
