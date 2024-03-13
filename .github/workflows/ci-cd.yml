@@ -21,15 +21,15 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-        working-directory: IoT/website/vite-project
+        working-directory: website/vite-project
 
       - name: Run Tests
         run: npm run test
-        working-directory: IoT/website/vite-project
+        working-directory: website/vite-project
 
       - name: Build
         run: npm run build
-        working-directory: IoT/website/vite-project
+        working-directory: website/vite-project
 
   deploy:
     needs: build-and-test
