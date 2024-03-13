@@ -33,14 +33,4 @@ jobs:
       run: npm run build
       working-directory: website/vite-project
 
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        publish_dir: website/vite-project
+ 
