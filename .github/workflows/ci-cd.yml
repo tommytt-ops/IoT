@@ -1,18 +1,6 @@
-name: CI/CD Pipeline
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: IoT/website
 
     steps:
     - uses: actions/checkout@v2
@@ -22,14 +10,16 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm'
+      working-directory: IoT/website
 
     - name: Install Dependencies
       run: npm ci
+      working-directory: IoT/website
 
     - name: Run Tests
-      run: npm run test
+      run: npm test
+      working-directory: IoT/website
 
     - name: Build
       run: npm run build
-
-
+      working-directory: IoT/website
