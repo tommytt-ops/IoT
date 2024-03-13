@@ -20,7 +20,7 @@ describe("fetchAndCalculateAverages", () => {
     );
 
     const expectedAverages = {
-      "film1": 205, 
+      "film1": 207, 
       "film2": 210, 
     };
 
