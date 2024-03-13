@@ -34,4 +34,15 @@ jobs:
       run: npm run build  # Assumes you have a build script in your package.json
       working-directory: website/vite-project # Updated working directory
 
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: website/vite-project
  
