@@ -10,10 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: website # Updated working directory
-
     steps:
     - uses: actions/checkout@v4
 
