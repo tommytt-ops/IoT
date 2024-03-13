@@ -42,5 +42,5 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./website/vite-project/dist # Update this to your build output directory
+        github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        publish_dir: website/vite-project
