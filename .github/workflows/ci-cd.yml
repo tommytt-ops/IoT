@@ -42,5 +42,5 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         branch: master  
-        folder: vite-project
+        folder: website/vite-project
         token: ${{ secrets.GITHUB_TOKEN }}
