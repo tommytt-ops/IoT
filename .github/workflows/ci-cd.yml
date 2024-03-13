@@ -10,10 +10,6 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: IoT/website  # Updated working directory
-
     steps:
     - uses: actions/checkout@v2
 
@@ -24,12 +20,16 @@ jobs:
         cache: 'npm'
 
     - name: Install Dependencies
-      run: npm ci  # Using npm ci to install dependencies from the lock file
+      run: npm ci
+      working-directory: ./IoT/website
 
     - name: Run Tests
       run: npm run test
+      working-directory: ./IoT/website
 
     - name: Build
-      run: npm run build  # Assumes you have a build script in your package.json
+      run: npm run build
+      working-directory: ./IoT/website
+
 
 
