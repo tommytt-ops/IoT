@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: website/vite-project
+        working-directory: IoT/website
 
     steps:
     - uses: actions/checkout@v2
