@@ -3,7 +3,7 @@ import pandas as pd
 # Load the CSV file
 df = pd.read_csv('./python/arduinoCsv/historic-data-20240309T184621Z/BPM-heartBPM.csv')
 
-# Convert the 'time' column to a datetime object while reading from the CSV
+# Convert the 'time' column to a datetime object while reading from the CSVx
 df['time'] = pd.to_datetime(df['time'], format='%Y-%m-%dT%H:%M:%S.%fZ')
 
 # Create 'date' and 'time' columns from the 'time' column
