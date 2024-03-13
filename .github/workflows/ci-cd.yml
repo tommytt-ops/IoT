@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: IoT/website  # Updated working directory
+        working-directory: website  # Updated working directory
 
     steps:
     - uses: actions/checkout@v2
