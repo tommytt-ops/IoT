@@ -38,7 +38,7 @@ jobs:
           git config user.name "tommytt-ops"
           git config user.email "tommytt721@gmail.com"
       env:
-        GH_TOKEN: ${{ PERSONAL_ACCESS_TOKEN }}
+        GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     
     - name: Deploy
       run: npm run deploy
