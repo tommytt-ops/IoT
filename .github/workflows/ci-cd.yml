@@ -41,7 +41,7 @@ jobs:
         GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
     
     - name: Deploy
-      run: npm run deploy
+      run: npm run build
       working-directory: website/vite-project
 
 
