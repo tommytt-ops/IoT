@@ -37,16 +37,13 @@ jobs:
       run: |
         git fetch --all
         git checkout gh-pages
-        git config --global user.email "tommytt721@gamil.com"
-        git config --global user.name "tommy-ops"
+        git config --global user.email "tommytt721@gmail.com"
+        git config --global user.name "tommytt-ops"
         git add .
-        git commit -m "gh-pages update"
+        git commit -m "gh-pages update" || true
         git push origin gh-pages  
-        git fetch origin main:main  
-        git checkout main  
       env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN}}
-      working-directory: website/vite-project
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
