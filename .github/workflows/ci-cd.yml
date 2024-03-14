@@ -37,6 +37,8 @@ jobs:
       run: |
         git fetch --all
         git checkout gh-pages
+        git config --global user.email "tommytt721@gamil.com"
+        git config --global user.name "tommy-ops"
         git add .
         git commit -m "gh-pages update"
         git checkout main
