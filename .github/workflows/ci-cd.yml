@@ -32,6 +32,11 @@ jobs:
     - name: Build
       run: npm run build
       working-directory: website/vite-project
+
+    - name: Configure Git
+      run: |
+          git config user.name "tommytt-ops"
+          git config user.email "tommytt721@gmail.com"
     
     - name: Deploy
       run: npm run deploy
