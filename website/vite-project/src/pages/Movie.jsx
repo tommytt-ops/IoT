@@ -25,7 +25,7 @@ ChartJS.register(
 function CsvDataComponent() {
   const [dataPoints, setDataPoints] = useState([]);
   const selectedMovie = localStorage.getItem("selectedFile"); 
-  const fileName = `/csv/${selectedMovie}.csv`;
+  const fileName = `./csv/${selectedMovie}.csv`;
 
 
   useEffect(() => {
