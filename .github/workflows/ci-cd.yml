@@ -41,7 +41,9 @@ jobs:
         git config --global user.name "tommy-ops"
         git add .
         git commit -m "gh-pages update"
-        git checkout main
+        git push origin gh-pages  
+        git fetch origin main:main  
+        git checkout main  
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN}}
       working-directory: website/vite-project
