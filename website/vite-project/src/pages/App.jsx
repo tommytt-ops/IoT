@@ -26,7 +26,7 @@ function CsvFileAverages() {
 
   return (
     <div className='title'>
-      <h2>Movies 2</h2>
+      <h2>Movies</h2>
       <div className="average-list">
         {Object.entries(averages).map(([fileName, avg]) => (
           <p key={fileName} onClick={() => handleFileClick(fileName.replace('.csv', ''))}>
