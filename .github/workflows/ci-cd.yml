@@ -31,9 +31,9 @@ jobs:
 
     - name: Deploy
       run: |
-       npm run deploy
        git config --global user.email "tommytt721@gmail.com"
        git config --global user.name "tommytt-ops"
+       npm rund deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       working-directory: website/vite-project
