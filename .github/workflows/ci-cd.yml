@@ -29,9 +29,11 @@ jobs:
       run: npm run test
       working-directory: website/vite-project
 
-    - name: Build
-      run: npm run build
+    - name: Deploy
+      run: npm run deploy
       working-directory: website/vite-project
+
+
     
 
 
