@@ -24,7 +24,7 @@ RUN npm run build
 FROM nginx:stable-alpine as production-stage
 
 # Copy the built app to Nginx's serve directory
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+COPY --from=build-stage /website/vite-project/dist /usr/share/nginx/html
 
 # Expose port 80 to the outside once the container has launched
 EXPOSE 80
