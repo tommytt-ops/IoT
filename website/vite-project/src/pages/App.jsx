@@ -5,7 +5,7 @@ import { fetchAndCalculateAverages } from "../utils/utils";
 
 function CsvFileAverages() {
   const [averages, setAverages] = useState({});
-  const fileNames = ["./csv/film1.csv", "./csv/film2.csv", "./csv/Stopmotion.csv"]; 
+  const fileNames = ["./csv/Immaculate.csv", "./csv/Stopmotion.csv"]; 
   const navigate = useNavigate(); 
 
   useEffect(() => {
